@@ -1,0 +1,12 @@
+name: 'Agent PreShip Guard'
+description: 'Static pre-ship scan for risky AI-agent code: model output to shell/eval, unscoped tools, secrets in prompts.'
+author: 'elaysuu'
+branding: {icon: 'shield', color: 'red'}
+inputs:
+  path: {description: 'Directory to scan', default: '.'}
+  fail-on: {description: 'high|medium|none', default: 'high'}
+runs:
+  using: 'composite'
+  steps:
+    - shell: bash
+      run: python3 "${{ github.action_path }}/scan.py" "${{ inputs.path }}" "${{ inputs.fail-on }}"
