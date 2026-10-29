@@ -37,6 +37,7 @@ These are heuristics. They catch obvious mistakes, not every risk. AG008 is file
 
 ## Go deeper
 - 20 free prompt-injection payloads: https://github.com/elaysuu/prompt-injection-test-payloads
+- [Free: AI Agent Pre-Ship Mini Checklist (10 checks, PDF, $0+)](https://setrov.gumroad.com/l/nvfxd)
 - [AI Agent Pre-Ship Security Checklist (40 checks + tracker)](https://setrov.gumroad.com/l/vldkkl)
 - [Prompt-Injection Red-Team Test Pack (100 payloads)](https://setrov.gumroad.com/l/scrwq)
 - [MCP Server Security Review Checklist](https://setrov.gumroad.com/l/rxdvi)
