@@ -42,6 +42,6 @@ def main():
                 print(f"::error file={p},line={i}::{rid} {msg}")
     h=sum(1 for x in hits if x[0]=="high"); m=len(hits)-h
     print(f"\nAgent PreShip Guard: {h} high, {m} medium findings.")
-    print("Heuristic scan only. Full 40-check manual review: https://setrov.gumroad.com/l/vldkkl")
+    print("Heuristic scan only: no findings does not mean safe. Manual review still required.")
     if (fail=="high" and h) or (fail=="medium" and hits): sys.exit(1)
 if __name__=="__main__": main()
