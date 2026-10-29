@@ -1,4 +1,4 @@
-# Agent PreShip Guard
+# Agent PreShip Guard (v1.1)
 
 A free GitHub Action that flags risky AI-agent code before it ships: model output reaching a shell, `eval` on dynamic content, hardcoded keys, `shell=True` tools, secrets in prompts, open URL-fetch tools, and auto-approve flags.
 
@@ -29,8 +29,11 @@ Findings show up as inline PR annotations.
 | AG005 | medium | Env secrets interpolated into prompts |
 | AG006 | medium | Fetch tool taking arbitrary URLs (SSRF) |
 | AG007 | medium | Auto-approve / skip-confirmation flags |
+| AG008 | high | Model/LLM output (e.g. `json.loads(plan)`, `tool_calls`) selects a destructive call (`rmtree`, `os.remove`, `subprocess`, `DROP TABLE`, `DELETE FROM`, `.delete(`, `transfer(`) and no approval/confirm/human-in-the-loop check appears in the file |
 
-These are heuristics. They catch obvious mistakes, not every risk.
+These are heuristics. They catch obvious mistakes, not every risk. AG008 is file-level: an approval check in another module will not be seen (possible false positive), and a gate named something other than approve/confirm/hitl/input() will not be recognized.
+
+**v1.1:** fixed an AG001 false positive (`capture_output=True` was read as "model output"), added AG008. Tests: `python3 -m unittest discover -s tests`. See [CHANGELOG.md](CHANGELOG.md).
 
 ## Go deeper
 - 20 free prompt-injection payloads: https://github.com/elaysuu/prompt-injection-test-payloads
