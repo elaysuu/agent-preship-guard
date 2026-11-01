@@ -9,4 +9,8 @@ runs:
   using: 'composite'
   steps:
     - shell: bash
-      run: python3 "${{ github.action_path }}/scan.py" "${{ inputs.path }}" "${{ inputs.fail-on }}"
+      env:
+        PSG_ACTION_PATH: ${{ github.action_path }}
+        PSG_PATH: ${{ inputs.path }}
+        PSG_FAIL_ON: ${{ inputs.fail-on }}
+      run: python3 "$PSG_ACTION_PATH/scan.py" "$PSG_PATH" "$PSG_FAIL_ON"
